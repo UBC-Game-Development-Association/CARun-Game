@@ -23,8 +23,9 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        horizontalMove = Input.GetAxisRaw("Horizontal") * playerSpeed;
-        if (Input.GetButtonDown("Jump"))
+        float i = 0.01f;
+        horizontalMove = (0.1f + i * Time.realtimeSinceStartup) * playerSpeed;
+        if (Input.GetKey("space"))
         {
             jump = true;
         }
@@ -37,12 +38,13 @@ public class PlayerMove : MonoBehaviour
         {
             crouch = false;
         }
-
+        
     }
 
     private void FixedUpdate()
     {
         characterControl.Move(horizontalMove, crouch, jump);
-        jump = false;
+       
+            jump = false;
     }
 }
