@@ -27,7 +27,7 @@ public class TrapTrigger : MonoBehaviour
         if(collision.tag == "Player")
         {
             health.removeHealth(damage);
-            Debug.Log(health.healthVal);
+            Debug.Log(health.getHealth());
         }
     }
 }

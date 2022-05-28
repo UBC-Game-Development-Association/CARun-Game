@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int healthVal;
+    private int healthVal;
     public bool alive;
     public int max;
 
@@ -13,7 +13,12 @@ public class PlayerHealth : MonoBehaviour
         healthVal = val;
 
     }
+    
+    public int getHealth(){
+        return healthVal;
+    }
 
+    //for removing health - enemies/obstacles
     public void removeHealth(int val){
         healthVal = healthVal - val;
         if (healthVal < 0){
@@ -22,6 +27,7 @@ public class PlayerHealth : MonoBehaviour
 
     }
 
+    //adding health - future healing and power-ups
     public void addHealth(int val){
         healthVal = healthVal + val;
         if (healthVal > max){
