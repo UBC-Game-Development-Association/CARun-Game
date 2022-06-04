@@ -10,21 +10,40 @@ public class TrapTrigger : MonoBehaviour
     public GameObject player;
     public int damage;
     private PlayerHealth health;
-
+    public bool active = true;
+    public float secondsToActivate = 0;
     void Start(){
 
         health = player.GetComponent<PlayerHealth>();
 
     }
 
+    void Update()
+    {
+        secondsToActivate = secondsToActivate - 1*Time.deltaTime;
+        if (secondsToActivate < 0)
+        {
+            active = true;
+        }
+    }
+    
     private void Reset()
     {
         GetComponent<BoxCollider2D>().isTrigger=true;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void activateTrap()
     {
-        if(collision.tag == "Player")
+        active = true;
+    }
+
+    public void deactivateTrap()
+    {
+        active = false;
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if(collision.tag == "Player" && active)
         {
             health.removeHealth(damage);
             Debug.Log(health.getHealth());
