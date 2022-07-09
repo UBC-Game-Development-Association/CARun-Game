@@ -45,11 +45,11 @@ public class PlayerHealth : MonoBehaviour
         {
             Destroy(hearts[2].gameObject);
         }
-        if (healthVal < 10)
+        if (healthVal < (max * 2 / 3))
         {
             Destroy(hearts[1].gameObject);
         }
-        if (healthVal < 5)
+        if (healthVal < (max * 1 / 3))
         {
             Destroy(hearts[0].gameObject);
         }
