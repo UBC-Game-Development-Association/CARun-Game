@@ -9,7 +9,7 @@ public class TrapTrigger : MonoBehaviour
 {
     public GameObject player;
     public int damage;
-    private PlayerHealth health;
+    public PlayerHealth health;
     public bool active = true;
     public float secondsToActivate = 0;
     void Start(){
